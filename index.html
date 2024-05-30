@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC y Edad de Mascota</title>
+    <link rel="stylesheet" href="ESTILOS/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan+SC&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <a class="navbar-brand" href="#">Mi Mascota</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#imcModal">Calcular IMC</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#edadModal">Calcular Edad</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-toggle="modal" data-target="#loginModal">Inicio de sesión</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="IMG/LV.jpg" class="img-fluid" alt="Foto de mi mascota">
+            </div>
+            <div class="col-md-6">
+                <div class="container">
+                    <div class="ti">
+                        <h2>JACK</h2>
+                    </div>
+                    <div class="texto">
+                        <h3>Jack es un encantador cachorro de raza mixta, con un pelaje suave y brillante que refleja la luz de la luna como si estuviera salpicado de estrellas. Sus ojos, del color del océano en una noche tranquila, muestran una mezcla perfecta de determinación y bondad.</h3>
+                        <h3>Con una energía inagotable y una alegría contagiosa, Jack es el compañero perfecto para aventuras en el parque o largos paseos bajo el sol. Siempre está listo para explorar nuevos lugares y hacer nuevos amigos, tanto humanos como peludos.</h3>
+                        <h3>Aunque es juguetón y lleno de vida, también tiene un lado tranquilo y afectuoso. Disfruta de largas siestas al sol y de momentos de ternura acurrucada junto a sus seres queridos.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="imcModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Calcular IMC</h4>
+                    <button type="button" class="close" data-dismiss="modal">ฅ^._.^ฅ</button>
+                </div>
+                <div class="modal-body">
+                    <h1>Calculadora de IMC</h1>
+                    <label for="weight">Ingresa tu peso en libras:</label>
+                    <input type="text" id="weight"><br>
+                    <label for="height">Ingresa tu altura en pulgadas:</label>
+                    <input type="text" id="height"><br>
+                    <button class="caja" onclick="calculateBMI()">Calcular BMI</button>
+                    <p class="caja" id="result"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="edadModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Calcular Edad de Mascota</h4>
+                    <button type="button" class="close" data-dismiss="modal">ฅ^._.^ฅ</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="edadMascota">Edad de la mascota (años):</label>
+                            <input type="number" class="form-control" id="edadMascota" placeholder="Ingresa la edad de la mascota">
+                        </div>
+                    </form>
+                    <p id="dogAgeResult"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="calcularEdadMascota()">Calcular Edad</button>
+                    <button type="button" class="btn btn-primary" onclick="calcularEdadMascotaFormula()">Calcular con Fórmula</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="loginModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Inicio de sesión</h4>
+                    <button type="button" class="close" data-dismiss="modal">ฅ^._.^ฅ</button>
+                </div>
+                <div class="modal-body">
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="loginEmail">Correo electrónico:</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Ingresa tu correo electrónico">
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">Contraseña:</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Ingresa tu contraseña">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Mi Mascota. Todos los derechos reservados.
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
